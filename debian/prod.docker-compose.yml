@@ -1,9 +1,0 @@
-services:
-  dev:
-    image: alanfzf/devcontainer:debian-php82
-    tty: true
-    volumes:
-      - dev:/home/dev/
-      - /home/${USER}/.ssh:/home/dev/.ssh/
-volumes:
-  dev:

@@ -1,6 +1,5 @@
-FROM php:8.2-alpine as ci-formatter
+FROM php:8.3-alpine as ci-formatter
 
-ENV PHP_CS_FIXER_VER="3.57.2"
 # add composer binaries to path
 ENV PATH="/root/.composer/vendor/bin:${PATH}"
 
@@ -13,7 +12,7 @@ COPY --from=node:lts-alpine /usr/local/bin /usr/local/bin
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # Install blade-formatter and php-cs-fixer
-RUN npm install -g blade-formatter && \
-      composer global require friendsofphp/php-cs-fixer:${PHP_CS_FIXER_VER}
+RUN npm i -g blade-formatter && \
+      composer global require friendsofphp/php-cs-fixer
 
 WORKDIR /root
