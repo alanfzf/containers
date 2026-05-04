@@ -18,6 +18,7 @@ DB_PASSWORD="${DB_PASSWORD?:'DB_PASSWORD is not set'}"
 
 mariadb-dump \
     --host="${DB_HOST}" --user="${DB_USER}" --password="${DB_PASSWORD}" \
+    --ssl=false \
     --routines --events --triggers \
     --single-transaction --all-databases | gzip -c | \
     aws s3 cp - "${AWS_BUCKET}/dump-${ts}.sql.gz"
