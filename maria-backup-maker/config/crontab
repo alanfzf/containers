@@ -1,0 +1,10 @@
+# ┌ minute (0–59)
+# │ ┌ hour (0–23)
+# │ │ ┌ day of month (1–31)
+# │ │ │ ┌ month (1–12)
+# │ │ │ │ ┌ day of week (0–7, Sun=0 or 7)
+# │ │ │ │ │
+# * * * * * command_to_execute
+00 00 * * * backup.sh
+15 13 * * * backup.sh
+15 18 * * * backup.sh

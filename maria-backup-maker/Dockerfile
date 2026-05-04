@@ -1,0 +1,13 @@
+FROM alpine:latest
+
+RUN apk add --no-cache \
+    bash aws-cli mariadb-client
+
+# copy script
+COPY --chmod=755 scripts/backup.sh /usr/local/bin/backup.sh
+
+# copy crontabs for root user
+COPY config/crontab /etc/crontabs/root
+
+# start crond with log level 8 in foreground, output to stderr
+CMD ["crond", "-f", "-d", "8"]
