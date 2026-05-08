@@ -1,0 +1,13 @@
+services:
+  dropbox:
+    image: otherguy/dropbox:latest
+    restart: unless-stopped
+    environment:
+      TZ: "America/Guatemala"
+      DROPBOX_UID: ${DROPBOX_UID:-1000}
+      DROPBOX_GID: ${DROPBOX_GID:-1000}
+      POLLING_INTERVAL: ${POLLING_INTERVAL:-20}
+    volumes:
+      - ./settings:/opt/dropbox/.dropbox
+      # we need to comment this on the first run so this can correctly install
+      - ./dropbox:/opt/dropbox/Dropbox
